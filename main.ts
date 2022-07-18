@@ -1,21 +1,21 @@
 import { App, debounce, Plugin, PluginSettingTab, Setting } from 'obsidian';
 
-interface HideSidebarsWhenNarrowSettings {
+interface HideSidebarsOnWindowResizeSettings {
   leftMinWidth: number;
   rightMinWidth: number;
 }
 
-const DEFAULT_SETTINGS: HideSidebarsWhenNarrowSettings = {
+const DEFAULT_SETTINGS: HideSidebarsOnWindowResizeSettings = {
   leftMinWidth: 1400,
   rightMinWidth: 1100,
 };
 
-export default class HideSidebarsWhenNarrowPlugin extends Plugin {
-  settings: HideSidebarsWhenNarrowSettings;
+export default class HideSidebarsOnWindowResizePlugin extends Plugin {
+  settings: HideSidebarsOnWindowResizeSettings;
   previousWidth: number;
 
   async onload() {
-    console.log('loading HideSideBarsWhenNarrowPlugin');
+    console.log('loading HideSidebarsOnWindowResizePlugin');
 
     await this.loadSettings();
     this.addSettingTab(new SettingsTab(this.app, this));
@@ -69,9 +69,9 @@ export default class HideSidebarsWhenNarrowPlugin extends Plugin {
 }
 
 class SettingsTab extends PluginSettingTab {
-  plugin: HideSidebarsWhenNarrowPlugin;
+  plugin: HideSidebarsOnWindowResizePlugin;
 
-  constructor(app: App, plugin: HideSidebarsWhenNarrowPlugin) {
+  constructor(app: App, plugin: HideSidebarsOnWindowResizePlugin) {
     super(app, plugin);
     this.plugin = plugin;
   }
@@ -81,7 +81,7 @@ class SettingsTab extends PluginSettingTab {
 
     containerEl.empty();
 
-    containerEl.createEl('h3', { text: 'Hide Sidebars When Narrow' });
+    containerEl.createEl('h3', { text: 'Hide Sidebars on Resize' });
 
     new Setting(containerEl)
       .setName('Hide the left sidebar when the window is this narrow')
