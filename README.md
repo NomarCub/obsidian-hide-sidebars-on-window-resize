@@ -4,4 +4,10 @@ This is a plugin for [Obsidian](https://obsidian.md). It automatically hides the
 
 You can change the minimum width for both the left and right sidebar.
 
+## Installation
+
+You can install the plugin manually by copying a release to your `.obsidian/plugins/hide-sidebars-on-window-resize` folder.
+
+## Attributions
+
 This is a fork of a currently unmaintained repo by mybuddymichael that you can find [here](https://github.com/mybuddymichael/obsidian-hide-sidebars-when-narrow).
