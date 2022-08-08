@@ -1,6 +1,6 @@
 {
-	"name": "hide-sidebars-on-window-resize",
-	"version": "1.0.0",
+	"name": "obsidian-hide-sidebars-when-narrow",
+	"version": "1.0.3",
 	"description": "This Obsidian plugin hides the sidebars when the window is resized to be narrower",
 	"main": "main.js",
 	"scripts": {

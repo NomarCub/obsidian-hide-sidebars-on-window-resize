@@ -6,7 +6,7 @@ You can change the minimum width for both the left and right sidebar.
 
 ## Installation
 
-You can install the plugin manually by copying a release to your `.obsidian/plugins/hide-sidebars-on-window-resize` folder.
+You can install the plugin manually by copying a release to your `.obsidian/plugins/obsidian-hide-sidebars-when-narrow` folder.
 
 ## Attributions
 
