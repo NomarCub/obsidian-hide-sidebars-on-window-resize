@@ -6,9 +6,18 @@ You can change the minimum width for both the left and right sidebar.
 
 ## Installation
 
+You can install the plugin via the Community Plugins tab within the Obsidian app.  
+[Here](https://obsidian.md/plugins?id=obsidian-hide-sidebars-when-narrow)'s the plugin in Obsidian's Community Plugins website.  
 You can install the plugin manually by copying a release to your `.obsidian/plugins/obsidian-hide-sidebars-when-narrow` folder.
 
-## Attributions
+## Development
 
-This is a fork of a currently unmaintained repo by mybuddymichael that you can find [here](https://github.com/mybuddymichael/obsidian-hide-sidebars-when-narrow).  
+This plugin follows the structure of the [Obsidian Sample Plugin](https://github.com/obsidianmd/obsidian-sample-plugin), see further details there.  
+Contributions are welcome.
+
+## Credits
+
+This is a fork of a currently unmaintained repo by [Michael Hanson](https://github.com/mybuddymichael) that you can find [here](https://github.com/mybuddymichael/obsidian-hide-sidebars-when-narrow).  
 As a start, it merges [this pull request](https://github.com/mybuddymichael/obsidian-hide-sidebars-when-narrow/pull/5) which addresses [this issue](https://github.com/mybuddymichael/obsidian-hide-sidebars-when-narrow/issues/2).
+
+If you like this plugin you can sponsor me here on GitHub: [![Sponsor NomarCub](https://img.shields.io/static/v1?label=Sponsor%20NomarCub&message=%E2%9D%A4&logo=GitHub&color=%23fe8e86)](https://github.com/sponsors/NomarCub), or on PayPal here: [![Paypal](https://img.shields.io/badge/paypal-nomarcub-yellow?style=social&logo=paypal)](https://paypal.me/nomarcub).
