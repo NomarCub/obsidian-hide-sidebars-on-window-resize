@@ -1,4 +1,4 @@
-import { debounce, Plugin } from 'obsidian';
+import { Plugin } from 'obsidian';
 import { HideSidebarsOnWindowResizeSettings, SettingsTab, DEFAULT_SETTINGS } from './settings';
 
 export default class HideSidebarsOnWindowResizePlugin extends Plugin {
@@ -11,13 +11,11 @@ export default class HideSidebarsOnWindowResizePlugin extends Plugin {
 		await this.loadSettings();
 		this.addSettingTab(new SettingsTab(this.app, this));
 
-		const debouncedToggle = debounce(this.toggleSidebars.bind(this), 80);
 		this.app.workspace.onLayoutReady(() => {
 			this.previousWidth = window.innerWidth;
 			this.toggleSidebars();
-			this.registerDomEvent(window, 'resize', (_) => {
-				debouncedToggle();
-			});
+
+			app.workspace.on('resize', () => this.toggleSidebars());
 		});
 	}
 
