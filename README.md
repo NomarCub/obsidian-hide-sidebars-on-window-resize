@@ -4,6 +4,13 @@ This is a plugin for [Obsidian](https://obsidian.md). It automatically hides the
 
 You can change the minimum width for both the left and right sidebar.
 
+## Related plugins
+
+- [Sidebar Toggler](https://github.com/chrisgrieser/obsidian-sidebar-toggler)
+  - > Finer control of the Obsidian sidebars. To be used with an external window manager.
+- [Auto Hide](https://github.com/skelato1/obsidian-auto-hide)
+  - > This plugin enables you to collapse (and expand) the sidebar easier.
+
 ## Installation
 
 You can install the plugin via the Community Plugins tab within the Obsidian app.  
