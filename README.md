@@ -10,6 +10,8 @@ You can change the minimum width for both the left and right sidebar.
   - > Finer control of the Obsidian sidebars. To be used with an external window manager.
 - [Auto Hide](https://github.com/skelato1/obsidian-auto-hide)
   - > This plugin enables you to collapse (and expand) the sidebar easier.
+- [Min Width](https://github.com/doitian/obsidian-min-width)
+  - > sets the minimum width for the active pane
 
 ## Installation
 
