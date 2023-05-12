@@ -1,14 +1,16 @@
-import { App, PluginSettingTab, Setting } from "obsidian";
+import { App, PluginSettingTab, Setting, ToggleComponent } from "obsidian";
 import HideSidebarsOnWindowResizePlugin from "./main";
 
 export interface HideSidebarsOnWindowResizeSettings {
 	leftMinWidth: number;
 	rightMinWidth: number;
+	showSidebarsBack: boolean;
 }
 
 export const DEFAULT_SETTINGS: HideSidebarsOnWindowResizeSettings = {
 	leftMinWidth: 1400,
 	rightMinWidth: 1100,
+	showSidebarsBack: true,
 };
 
 export class SettingsTab extends PluginSettingTab {
@@ -69,5 +71,17 @@ export class SettingsTab extends PluginSettingTab {
 						await this.plugin.saveSettings();
 					})
 			);
+
+		new Setting(this.containerEl)
+			.setName("Show sidebars back when window becomes wide again")
+			.setDesc("Sidebars remain hidden if option is disabled")
+			.addToggle((component: ToggleComponent) => {
+				component.setValue(this.plugin.settings.showSidebarsBack);
+				component.onChange((value: boolean) => {
+					this.plugin.settings.showSidebarsBack = value;
+					this.plugin.saveSettings();
+				});
+			});
+
 	}
 }

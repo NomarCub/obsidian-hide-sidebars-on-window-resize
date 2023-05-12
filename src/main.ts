@@ -29,7 +29,8 @@ export default class HideSidebarsOnWindowResizePlugin extends Plugin {
 		}
 		else if (width > this.settings.leftMinWidth &&
 			width > this.previousWidth &&
-			this.app.workspace.leftSplit.collapsed) {
+			this.app.workspace.leftSplit.collapsed &&
+			this.settings.showSidebarsBack) {
 			this.app.workspace.leftSplit.expand();
 		}
 
@@ -40,11 +41,12 @@ export default class HideSidebarsOnWindowResizePlugin extends Plugin {
 		}
 		else if (width > this.settings.rightMinWidth &&
 			width > this.previousWidth &&
-			this.app.workspace.rightSplit.collapsed) {
+			this.app.workspace.rightSplit.collapsed &&
+			this.settings.showSidebarsBack) {
 			this.app.workspace.rightSplit.expand();
 		}
 
-		this.previousWidth = width;
+		this.previousWidth = width; 
 	}
 
 	async loadSettings() {
