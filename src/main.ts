@@ -2,11 +2,11 @@ import { Plugin } from 'obsidian';
 import { HideSidebarsOnWindowResizeSettings, SettingsTab, DEFAULT_SETTINGS } from './settings';
 
 export default class HideSidebarsOnWindowResizePlugin extends Plugin {
-	settings: HideSidebarsOnWindowResizeSettings;
-	previousWidth: number;
+	settings!: HideSidebarsOnWindowResizeSettings;
+	previousWidth!: number;
 
-	async onload() {
-		console.log('loading HideSidebarsOnWindowResizePlugin');
+	override async onload() {
+		console.log("Loading " + this.manifest.name + " plugin");
 
 		await this.loadSettings();
 		this.addSettingTab(new SettingsTab(this.app, this));

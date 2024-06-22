@@ -1,5 +1,7 @@
+.devtarget
+
 # vscode
-.vscode 
+.vscode
 
 # Intellij
 *.iml
