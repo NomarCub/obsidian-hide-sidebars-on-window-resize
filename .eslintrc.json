@@ -10,14 +10,18 @@
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/eslint-recommended",
-    "plugin:@typescript-eslint/recommended-type-checked"
+    "plugin:@typescript-eslint/strict-type-checked"
   ],
   "parserOptions": {
     "sourceType": "module",
     "project": true
   },
   "rules": {
-    "@typescript-eslint/no-floating-promises": "off",
-    "@typescript-eslint/no-unsafe-assignment": "off"
+    "@typescript-eslint/restrict-template-expressions": [
+      "error",
+      {
+        "allowNumber": true
+      }
+    ]
   }
 }
