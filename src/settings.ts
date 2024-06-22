@@ -1,4 +1,4 @@
-import { App, PluginSettingTab, Setting, ToggleComponent } from "obsidian";
+import { App, PluginSettingTab, Setting } from "obsidian";
 import HideSidebarsOnWindowResizePlugin from "./main";
 
 export interface HideSidebarsOnWindowResizeSettings {
@@ -33,17 +33,16 @@ export class SettingsTab extends PluginSettingTab {
             .setDesc(
                 "Increase this to hide the left sidebar sooner; decrease it to delay hiding"
             )
-            .addText((text) =>
+            .addText(text =>
                 text
                     .setPlaceholder(`Default: ${DEFAULT_SETTINGS.leftMinWidth}`)
                     .setValue(this.plugin.settings.leftMinWidth.toString())
-                    .onChange(async (value) => {
+                    .onChange(async value => {
                         const num = parseInt(value);
                         if (num) {
                             this.plugin.settings.leftMinWidth = num;
                         } else {
-                            this.plugin.settings.leftMinWidth =
-                                DEFAULT_SETTINGS.leftMinWidth;
+                            this.plugin.settings.leftMinWidth = DEFAULT_SETTINGS.leftMinWidth;
                         }
                         await this.plugin.saveSettings();
                     })
@@ -54,30 +53,28 @@ export class SettingsTab extends PluginSettingTab {
             .setDesc(
                 "Increase this to hide the right sidebar sooner; decrease it to delay hiding"
             )
-            .addText((text) =>
-                text
-                    .setPlaceholder(
-                        `Default: ${DEFAULT_SETTINGS.rightMinWidth}`
-                    )
-                    .setValue(this.plugin.settings.rightMinWidth.toString())
-                    .onChange(async (value) => {
-                        const num = parseInt(value);
-                        if (num) {
-                            this.plugin.settings.rightMinWidth = num;
-                        } else {
-                            this.plugin.settings.rightMinWidth =
-                                DEFAULT_SETTINGS.rightMinWidth;
-                        }
-                        await this.plugin.saveSettings();
-                    })
+            .addText(text => text
+                .setPlaceholder(
+                    `Default: ${DEFAULT_SETTINGS.rightMinWidth}`
+                )
+                .setValue(this.plugin.settings.rightMinWidth.toString())
+                .onChange(async value => {
+                    const num = parseInt(value);
+                    if (num) {
+                        this.plugin.settings.rightMinWidth = num;
+                    } else {
+                        this.plugin.settings.rightMinWidth = DEFAULT_SETTINGS.rightMinWidth;
+                    }
+                    await this.plugin.saveSettings();
+                })
             );
 
         new Setting(this.containerEl)
             .setName("Show sidebars back when window becomes wide again")
             .setDesc("Sidebars remain hidden if option is disabled")
-            .addToggle((component: ToggleComponent) => {
+            .addToggle(component => {
                 component.setValue(this.plugin.settings.showSidebarsBack);
-                component.onChange((value: boolean) => {
+                component.onChange(value => {
                     this.plugin.settings.showSidebarsBack = value;
                     void this.plugin.saveSettings();
                 });

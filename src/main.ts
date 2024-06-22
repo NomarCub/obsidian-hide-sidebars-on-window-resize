@@ -1,5 +1,5 @@
-import { Plugin } from 'obsidian';
-import { HideSidebarsOnWindowResizeSettings, SettingsTab, DEFAULT_SETTINGS } from './settings';
+import { Plugin } from "obsidian";
+import { HideSidebarsOnWindowResizeSettings, SettingsTab, DEFAULT_SETTINGS } from "./settings";
 
 export default class HideSidebarsOnWindowResizePlugin extends Plugin {
     settings!: HideSidebarsOnWindowResizeSettings;
@@ -15,34 +15,32 @@ export default class HideSidebarsOnWindowResizePlugin extends Plugin {
             this.previousWidth = window.innerWidth;
             this.toggleSidebars();
 
-            this.app.workspace.on('resize', () => { this.toggleSidebars() });
+            this.app.workspace.on("resize", () => { this.toggleSidebars(); });
         });
     }
 
     toggleSidebars() {
         const width = window.innerWidth;
 
-        if (width < this.settings.leftMinWidth &&
-            width < this.previousWidth &&
-            !this.app.workspace.leftSplit.collapsed) {
+        if (width < this.settings.leftMinWidth
+              && width < this.previousWidth
+              && !this.app.workspace.leftSplit.collapsed) {
             this.app.workspace.leftSplit.collapse();
-        }
-        else if (width > this.settings.leftMinWidth &&
-            width > this.previousWidth &&
-            this.app.workspace.leftSplit.collapsed &&
-            this.settings.showSidebarsBack) {
+        } else if (width > this.settings.leftMinWidth
+              && width > this.previousWidth
+              && this.app.workspace.leftSplit.collapsed
+              && this.settings.showSidebarsBack) {
             this.app.workspace.leftSplit.expand();
         }
 
-        if (width < this.settings.rightMinWidth &&
-            width < this.previousWidth &&
-            !this.app.workspace.rightSplit.collapsed) {
+        if (width < this.settings.rightMinWidth
+              && width < this.previousWidth
+              && !this.app.workspace.rightSplit.collapsed) {
             this.app.workspace.rightSplit.collapse();
-        }
-        else if (width > this.settings.rightMinWidth &&
-            width > this.previousWidth &&
-            this.app.workspace.rightSplit.collapsed &&
-            this.settings.showSidebarsBack) {
+        } else if (width > this.settings.rightMinWidth
+              && width > this.previousWidth
+              && this.app.workspace.rightSplit.collapsed
+              && this.settings.showSidebarsBack) {
             this.app.workspace.rightSplit.expand();
         }
 
