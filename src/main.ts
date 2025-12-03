@@ -47,7 +47,8 @@ export default class HideSidebarsOnWindowResizePlugin extends Plugin {
         return width > this.settings.leftMinWidth
               && width > this.previousWidth
               && this.app.workspace.leftSplit.collapsed
-              && this.settings.showSidebarsBack;
+              && this.settings.showSidebarsBack
+              && !this.isInCompactMode();
     }
 
     shouldCollapsRightSidebar(width: number) : boolean {
@@ -60,7 +61,15 @@ export default class HideSidebarsOnWindowResizePlugin extends Plugin {
         return width > this.settings.rightMinWidth
               && width > this.previousWidth
               && this.app.workspace.rightSplit.collapsed
-              && this.settings.showSidebarsBack;
+              && this.settings.showSidebarsBack
+              && !this.isInCompactMode();
+    }
+
+    isInCompactMode() : boolean {
+        // @ts-ignore
+        let dailyNotesPluginInstance = this.app.plugins.getPlugin("zenmode");
+
+        return dailyNotesPluginInstance.settings.zenMode;
     }
 
     async loadSettings() {
