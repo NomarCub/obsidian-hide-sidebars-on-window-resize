@@ -22,29 +22,45 @@ export default class HideSidebarsOnWindowResizePlugin extends Plugin {
     toggleSidebars() {
         const width = window.innerWidth;
 
-        if (width < this.settings.leftMinWidth
-              && width < this.previousWidth
-              && !this.app.workspace.leftSplit.collapsed) {
+        if (this.shouldCollapsLeftSidebar(width)) {
             this.app.workspace.leftSplit.collapse();
-        } else if (width > this.settings.leftMinWidth
-              && width > this.previousWidth
-              && this.app.workspace.leftSplit.collapsed
-              && this.settings.showSidebarsBack) {
+        } else if (this.shouldExpandLeftSidebar(width)) {
             this.app.workspace.leftSplit.expand();
         }
 
-        if (width < this.settings.rightMinWidth
-              && width < this.previousWidth
-              && !this.app.workspace.rightSplit.collapsed) {
+        if (this.shouldCollapsRightSidebar(width)) {
             this.app.workspace.rightSplit.collapse();
-        } else if (width > this.settings.rightMinWidth
-              && width > this.previousWidth
-              && this.app.workspace.rightSplit.collapsed
-              && this.settings.showSidebarsBack) {
+        } else if (this.shouldExpandRightSidebar(width)) {
             this.app.workspace.rightSplit.expand();
         }
 
         this.previousWidth = width;
+    }
+
+    shouldCollapsLeftSidebar(width: number) : boolean {
+        return width < this.settings.leftMinWidth
+              && width < this.previousWidth
+              && !this.app.workspace.leftSplit.collapsed;
+    }
+
+    shouldExpandLeftSidebar(width: number) : boolean {
+        return width > this.settings.leftMinWidth
+              && width > this.previousWidth
+              && this.app.workspace.leftSplit.collapsed
+              && this.settings.showSidebarsBack;
+    }
+
+    shouldCollapsRightSidebar(width: number) : boolean {
+        return width < this.settings.rightMinWidth
+              && width < this.previousWidth
+              && !this.app.workspace.rightSplit.collapsed;
+    }
+
+    shouldExpandRightSidebar(width: number) : boolean {
+        return width > this.settings.rightMinWidth
+              && width > this.previousWidth
+              && this.app.workspace.rightSplit.collapsed
+              && this.settings.showSidebarsBack;
     }
 
     async loadSettings() {
