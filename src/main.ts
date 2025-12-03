@@ -67,9 +67,7 @@ export default class HideSidebarsOnWindowResizePlugin extends Plugin {
 
     isInCompactMode() : boolean {
         // @ts-ignore
-        let dailyNotesPluginInstance = this.app.plugins.getPlugin("zenmode");
-
-        return dailyNotesPluginInstance.settings.zenMode;
+        return this.app.plugins.getPlugin("zenmode")?.settings?.zenMode ?? false;
     }
 
     async loadSettings() {
