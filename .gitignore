@@ -1,7 +1,8 @@
 .devtarget
 
 # vscode
-.vscode
+.vscode/*
+!.vscode/settings.json
 
 # Intellij
 *.iml
