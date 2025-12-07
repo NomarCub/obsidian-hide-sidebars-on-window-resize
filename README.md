@@ -27,8 +27,12 @@ Contributions are welcome.
 ## Credits
 
 This is a fork of a currently unmaintained repo by [Michael Hanson](https://github.com/mybuddymichael) that you can find [here](https://github.com/mybuddymichael/obsidian-hide-sidebars-when-narrow).  
-As a start, it merges [this pull request](https://github.com/mybuddymichael/obsidian-hide-sidebars-when-narrow/pull/5) which addresses [this issue](https://github.com/mybuddymichael/obsidian-hide-sidebars-when-narrow/issues/2).  
-Ignore limit based on direction, and current maintenance by [@NomarCub](https://github.com/NomarCub).  
-"Sidebars remain hidden option" by [@extracat](https://github.com/extracat)
+As a start, it merges [this pull request](https://github.com/mybuddymichael/obsidian-hide-sidebars-when-narrow/pull/5) which addresses [this issue](https://github.com/mybuddymichael/obsidian-hide-sidebars-when-narrow/issues/2).
 
-If you like this plugin you can sponsor me here on GitHub: [![Sponsor NomarCub](https://img.shields.io/static/v1?label=Sponsor%20NomarCub&message=%E2%9D%A4&logo=GitHub&color=%23fe8e86)](https://github.com/sponsors/NomarCub), on Ko-fi here: <a href='https://ko-fi.com/nomarcub' target='_blank'><img height='35' src='https://az743702.vo.msecnd.net/cdn/kofi3.png?v=0' alt='Buy Me a Coffee at ko-fi.com' /></a>, or on PayPal here: [![Paypal](https://img.shields.io/badge/paypal-nomarcub-yellow?style=social&logo=paypal)](https://paypal.me/nomarcub).
+Ignore limit based on direction, and current maintenance by [@NomarCub](https://github.com/NomarCub).
+
+"Sidebars remain hidden option" by [@extracat](https://github.com/extracat)  
+Zen Mode plugin fix by [@HerrChaos](https://github.com/HerrChaos)
+
+If you like this plugin you can sponsor me here on GitHub: [![Sponsor NomarCub](https://img.shields.io/static/v1?label=Sponsor%20NomarCub&message=%E2%9D%A4&logo=GitHub&color=%23fe8e86)](https://github.com/sponsors/NomarCub), on Ko-fi here: <a href='https://ko-fi.com/nomarcub' target='_blank'><img height='26' style='border:0px;height:26px;' src='https://storage.ko-fi.com/cdn/kofi6.png?v=6' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>, or on PayPal here: [![Paypal](https://img.shields.io/badge/paypal-nomarcub-yellow?style=social&logo=paypal)](https://paypal.me/nomarcub).
+
