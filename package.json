@@ -19,7 +19,8 @@
 		"builtin-modules": "4.0.0",
 		"esbuild": "0.21.5",
 		"eslint": "^8.57.0",
-		"obsidian": "~1.5.7-1",
+		"obsidian": "~1.7.2",
+		"obsidian-typings": "2.41.4",
 		"tslib": "2.6.3",
 		"typescript": "5.5.2"
 	}

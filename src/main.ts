@@ -1,5 +1,12 @@
 import { Plugin } from "obsidian";
 import { HideSidebarsOnWindowResizeSettings, SettingsTab, DEFAULT_SETTINGS } from "./settings";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import * as obsidianInternal from "obsidian-typings";
+
+type ZenModePlugin = Plugin & {
+    // see: https://github.com/paperbenni/obsidian-zenmode/blob/1.5.4/main.ts#L433-L445
+    settings: { zenMode: boolean };
+};
 
 export default class HideSidebarsOnWindowResizePlugin extends Plugin {
     settings!: HideSidebarsOnWindowResizeSettings;
@@ -49,16 +56,10 @@ export default class HideSidebarsOnWindowResizePlugin extends Plugin {
         this.previousWidth = width;
     }
 
-    /**
-     * Check if the plugin "zenmode" is installed and get its settings (https://github.com/paperbenni/obsidian-zenmode/blob/main/main.ts#L433-L445).
-     * Then we check if then zen mode is on. The zen mode hides all elements like the sidebar and top bar.
-     * It looks very strange when we extend them while zen mode is enabled.
-     *
-     * The api for this is purely internal and that is why it is not in the obsidian package but the method is there, just not in the dev envoirment.
-     */
+    /** indicates that the app is in a mode where sidebars should not be auto-expanded */
     isInCompactMode(): boolean {
-        // @ts-ignore
-        return this.app.plugins.getPlugin("zenmode")?.settings?.zenMode ?? false;
+        const zenModePlugin = this.app.plugins.getPlugin("zenmode") as ZenModePlugin | null;
+        return zenModePlugin?.settings.zenMode ?? false;
     }
 
     async loadSettings() {
