@@ -22,7 +22,7 @@ export default class HideSidebarsOnWindowResizePlugin extends Plugin {
     toggleSidebars() {
         const width = window.innerWidth;
 
-       if (width < this.settings.leftMinWidth
+        if (width < this.settings.leftMinWidth
               && width < this.previousWidth
               && !this.app.workspace.leftSplit.collapsed) {
             this.app.workspace.leftSplit.collapse();
@@ -51,12 +51,12 @@ export default class HideSidebarsOnWindowResizePlugin extends Plugin {
 
     /**
      * Check if the plugin "zenmode" is installed and get its settings (https://github.com/paperbenni/obsidian-zenmode/blob/main/main.ts#L433-L445).
-     * Then we check if then zen mode is on. The zen mode hides all elements like the sidebar and top bar. 
+     * Then we check if then zen mode is on. The zen mode hides all elements like the sidebar and top bar.
      * It looks very strange when we extend them while zen mode is enabled.
-     * 
+     *
      * The api for this is purely internal and that is why it is not in the obsidian package but the method is there, just not in the dev envoirment.
      */
-    isInCompactMode() : boolean {
+    isInCompactMode(): boolean {
         // @ts-ignore
         return this.app.plugins.getPlugin("zenmode")?.settings?.zenMode ?? false;
     }
