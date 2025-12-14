@@ -1,8 +1,5 @@
 import { Plugin } from "obsidian";
-/* eslint-disable-next-line @typescript-eslint/no-unused-vars --
-   biome-ignore lint/correctness/noUnusedImports: see below
-   using the recommended `import "obsidian-typings";` breaks esbuild */
-import * as obsidianInternal from "obsidian-typings";
+import type {} from "obsidian-typings";
 
 import { DEFAULT_SETTINGS, type HideSidebarsOnWindowResizeSettings, SettingsTab } from "./settings";
 
