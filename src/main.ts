@@ -1,7 +1,7 @@
 import { Plugin } from "obsidian";
 import type {} from "obsidian-typings";
 
-import { DEFAULT_SETTINGS, type HideSidebarsOnWindowResizeSettings, SettingsTab } from "./settings";
+import { DEFAULT_SETTINGS, type HideSidebarsOnWindowResizeSettings, SettingsTab } from "./settings.ts";
 
 type ZenModePlugin = Plugin & {
     // see: https://github.com/paperbenni/obsidian-zenmode/blob/1.5.4/main.ts#L433-L445
@@ -13,8 +13,6 @@ export default class HideSidebarsOnWindowResizePlugin extends Plugin {
     previousWidth!: number;
 
     override async onload(): Promise<void> {
-        console.log(`Loading ${this.manifest.name} plugin`);
-
         await this.loadSettings();
         this.addSettingTab(new SettingsTab(this.app, this));
 

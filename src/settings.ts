@@ -1,6 +1,6 @@
 import { type App, PluginSettingTab, Setting } from "obsidian";
 
-import type HideSidebarsOnWindowResizePlugin from "./main";
+import type HideSidebarsOnWindowResizePlugin from "./main.ts";
 
 export interface HideSidebarsOnWindowResizeSettings {
     leftMinWidth: number;
@@ -26,8 +26,6 @@ export class SettingsTab extends PluginSettingTab {
         const { containerEl } = this;
 
         containerEl.empty();
-
-        containerEl.createEl("h3", { text: "Hide Sidebars on Window Resize" });
 
         new Setting(containerEl)
             .setName("Hide the left sidebar when the window is this narrow")
