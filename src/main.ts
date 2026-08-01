@@ -9,7 +9,7 @@ type ZenModePlugin = Plugin & {
 };
 
 export default class HideSidebarsOnWindowResizePlugin extends Plugin {
-    settings!: HideSidebarsOnWindowResizeSettings;
+    override settings!: HideSidebarsOnWindowResizeSettings;
     previousWidth!: number;
 
     override async onload(): Promise<void> {
@@ -71,11 +71,7 @@ export default class HideSidebarsOnWindowResizePlugin extends Plugin {
     }
 
     async loadSettings(): Promise<void> {
-        this.settings = Object.assign(
-            {},
-            DEFAULT_SETTINGS,
-            await this.loadData(),
-        ) as HideSidebarsOnWindowResizeSettings;
+        this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());
     }
 
     async saveSettings(): Promise<void> {
