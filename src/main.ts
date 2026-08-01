@@ -73,9 +73,4 @@ export default class HideSidebarsOnWindowResizePlugin extends Plugin {
     async loadSettings(): Promise<void> {
         this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());
     }
-
-    async saveSettings(): Promise<void> {
-        await this.saveData(this.settings);
-        this.toggleSidebars();
-    }
 }
