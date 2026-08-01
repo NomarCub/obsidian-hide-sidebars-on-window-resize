@@ -18,15 +18,15 @@ export default class HideSidebarsOnWindowResizePlugin extends Plugin {
 
         this.app.workspace.onLayoutReady(() => {
             this.previousWidth = window.innerWidth;
-            this.toggleSidebars();
+            this.refreshSidebars();
 
             this.app.workspace.on("resize", () => {
-                this.toggleSidebars();
+                this.refreshSidebars();
             });
         });
     }
 
-    toggleSidebars(): void {
+    refreshSidebars(): void {
         const width = window.innerWidth;
 
         if (
