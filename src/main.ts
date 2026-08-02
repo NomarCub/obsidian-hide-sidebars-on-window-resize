@@ -9,7 +9,7 @@ type ZenModePlugin = Plugin & {
 };
 
 export default class HideSidebarsOnWindowResizePlugin extends Plugin {
-    settings!: HideSidebarsOnWindowResizeSettings;
+    override settings!: HideSidebarsOnWindowResizeSettings;
     previousWidth!: number;
 
     override async onload(): Promise<void> {
@@ -18,15 +18,15 @@ export default class HideSidebarsOnWindowResizePlugin extends Plugin {
 
         this.app.workspace.onLayoutReady(() => {
             this.previousWidth = window.innerWidth;
-            this.toggleSidebars();
+            this.refreshSidebars();
 
             this.app.workspace.on("resize", () => {
-                this.toggleSidebars();
+                this.refreshSidebars();
             });
         });
     }
 
-    toggleSidebars(): void {
+    refreshSidebars(): void {
         const width = window.innerWidth;
 
         if (
@@ -71,15 +71,6 @@ export default class HideSidebarsOnWindowResizePlugin extends Plugin {
     }
 
     async loadSettings(): Promise<void> {
-        this.settings = Object.assign(
-            {},
-            DEFAULT_SETTINGS,
-            await this.loadData(),
-        ) as HideSidebarsOnWindowResizeSettings;
-    }
-
-    async saveSettings(): Promise<void> {
-        await this.saveData(this.settings);
-        this.toggleSidebars();
+        this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());
     }
 }
