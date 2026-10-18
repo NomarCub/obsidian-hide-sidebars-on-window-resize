@@ -6,12 +6,14 @@ export interface HideSidebarsOnWindowResizeSettings {
     leftMinWidth: number;
     rightMinWidth: number;
     showSidebarsBack: boolean;
+    reopenManuallyCollapsedSidebars: boolean;
 }
 
 export const DEFAULT_SETTINGS: HideSidebarsOnWindowResizeSettings = {
     leftMinWidth: 1_400,
     rightMinWidth: 1_100,
     showSidebarsBack: true,
+    reopenManuallyCollapsedSidebars: false,
 };
 
 export class SettingsTab extends PluginSettingTab {
@@ -49,6 +51,15 @@ export class SettingsTab extends PluginSettingTab {
                     type: "toggle",
                     key: "showSidebarsBack",
                     defaultValue: DEFAULT_SETTINGS.showSidebarsBack,
+                },
+            },
+            {
+                name: "Reopen manually collapsed sidebars",
+                desc: "Also reopen sidebars you collapsed yourself when the window gets wide enough",
+                control: {
+                    type: "toggle",
+                    key: "reopenManuallyCollapsedSidebars",
+                    defaultValue: DEFAULT_SETTINGS.reopenManuallyCollapsedSidebars,
                 },
             },
         ];
