@@ -29,6 +29,7 @@ export default class HideSidebarsOnWindowResizePlugin extends Plugin {
     refreshSidebars(): void {
         const width = window.innerWidth;
 
+        // Left Sidebar
         if (
             width < this.settings.leftMinWidth &&
             width < this.previousWidth &&
@@ -45,6 +46,7 @@ export default class HideSidebarsOnWindowResizePlugin extends Plugin {
             this.app.workspace.leftSplit.expand();
         }
 
+        // Right Sidebar
         if (
             width < this.settings.rightMinWidth &&
             width < this.previousWidth &&
