@@ -33,6 +33,7 @@ export default class HideSidebarsOnWindowResizePlugin extends Plugin {
 
         // Left Sidebar
         if (
+            this.settings.manageLeftSidebar &&
             width < this.settings.leftMinWidth &&
             width < this.previousWidth &&
             !this.app.workspace.leftSplit.collapsed
@@ -40,6 +41,7 @@ export default class HideSidebarsOnWindowResizePlugin extends Plugin {
             this.app.workspace.leftSplit.collapse();
             this.leftClosedByPlugin = true;
         } else if (
+            this.settings.manageLeftSidebar &&
             width > this.settings.leftMinWidth &&
             width > this.previousWidth &&
             this.app.workspace.leftSplit.collapsed &&
@@ -53,6 +55,7 @@ export default class HideSidebarsOnWindowResizePlugin extends Plugin {
 
         // Right Sidebar
         if (
+            this.settings.manageRightSidebar &&
             width < this.settings.rightMinWidth &&
             width < this.previousWidth &&
             !this.app.workspace.rightSplit.collapsed
@@ -60,6 +63,7 @@ export default class HideSidebarsOnWindowResizePlugin extends Plugin {
             this.app.workspace.rightSplit.collapse();
             this.rightClosedByPlugin = true;
         } else if (
+            this.settings.manageRightSidebar &&
             width > this.settings.rightMinWidth &&
             width > this.previousWidth &&
             this.app.workspace.rightSplit.collapsed &&
@@ -72,10 +76,10 @@ export default class HideSidebarsOnWindowResizePlugin extends Plugin {
         }
 
         // Clear plugin ownership while the sidebar is open
-        if (!this.app.workspace.leftSplit.collapsed) {
+        if (!this.settings.manageLeftSidebar || !this.app.workspace.leftSplit.collapsed) {
             this.leftClosedByPlugin = false;
         }
-        if (!this.app.workspace.rightSplit.collapsed) {
+        if (!this.settings.manageRightSidebar || !this.app.workspace.rightSplit.collapsed) {
             this.rightClosedByPlugin = false;
         }
 

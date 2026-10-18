@@ -3,7 +3,8 @@
 This is a plugin for [Obsidian](https://obsidian.md). It automatically hides the sidebars when the window gets too narrow and shows them when it gets wide again.
 By default, it only reopens sidebars that it collapsed itself; this can be changed in the plugin settings.
 
-You can change the minimum width for both the left and right sidebar.
+You can change the minimum width for both the left and right sidebar.  
+You can also choose independently whether the plugin manages each sidebar.
 
 ## Related plugins
 
