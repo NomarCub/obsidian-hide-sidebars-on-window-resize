@@ -1,8 +1,10 @@
 # Hide Sidebars on Window Resize
 
 This is a plugin for [Obsidian](https://obsidian.md). It automatically hides the sidebars when the window gets too narrow and shows them when it gets wide again.
+By default, it only reopens sidebars that it collapsed itself; this can be changed in the plugin settings.
 
-You can change the minimum width for both the left and right sidebar.
+You can change the minimum width for both the left and right sidebar.  
+You can also choose independently whether the plugin manages each sidebar.
 
 ## Related plugins
 
@@ -39,6 +41,7 @@ As a start, it merges [this pull request](https://github.com/mybuddymichael/obsi
 Ignore limit based on direction, and current maintenance by [@NomarCub](https://github.com/NomarCub).
 
 "Sidebars remain hidden option" by [@extracat](https://github.com/extracat)  
-Zen Mode plugin fix by [@HerrChaos](https://github.com/HerrChaos)
+Zen Mode plugin fix by [@HerrChaos](https://github.com/HerrChaos)  
+"Reopen manually collapsed sidebars option" by [@felesfeles](https://github.com/felesfeles)
 
 If you like this plugin you can sponsor me here on GitHub: [![Sponsor NomarCub](https://img.shields.io/static/v1?label=Sponsor%20NomarCub&message=%E2%9D%A4&logo=GitHub&color=%23fe8e86)](https://github.com/sponsors/NomarCub), on Ko-fi here: <a href='https://ko-fi.com/nomarcub' target='_blank'><img height='26' style='border:0px;height:26px;' src='https://storage.ko-fi.com/cdn/kofi6.png?v=6' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>, or on PayPal here: [![Paypal](https://img.shields.io/badge/paypal-nomarcub-yellow?style=social&logo=paypal)](https://paypal.me/nomarcub).

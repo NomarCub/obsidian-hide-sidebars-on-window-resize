@@ -3,15 +3,21 @@ import { type App, PluginSettingTab, type SettingDefinitionItem } from "obsidian
 import type HideSidebarsOnWindowResizePlugin from "./main.ts";
 
 export interface HideSidebarsOnWindowResizeSettings {
+    manageLeftSidebar: boolean;
+    manageRightSidebar: boolean;
     leftMinWidth: number;
     rightMinWidth: number;
     showSidebarsBack: boolean;
+    reopenManuallyCollapsedSidebars: boolean;
 }
 
 export const DEFAULT_SETTINGS: HideSidebarsOnWindowResizeSettings = {
+    manageLeftSidebar: true,
+    manageRightSidebar: true,
     leftMinWidth: 1_400,
     rightMinWidth: 1_100,
     showSidebarsBack: true,
+    reopenManuallyCollapsedSidebars: false,
 };
 
 export class SettingsTab extends PluginSettingTab {
@@ -24,6 +30,24 @@ export class SettingsTab extends PluginSettingTab {
 
     override getSettingDefinitions(): SettingDefinitionItem<keyof HideSidebarsOnWindowResizeSettings>[] {
         return [
+            {
+                name: "Automatically manage the left sidebar",
+                desc: "Disable to leave the left sidebar unchanged when the window is resized",
+                control: {
+                    type: "toggle",
+                    key: "manageLeftSidebar",
+                    defaultValue: DEFAULT_SETTINGS.manageLeftSidebar,
+                },
+            },
+            {
+                name: "Automatically manage the right sidebar",
+                desc: "Disable to leave the right sidebar unchanged when the window is resized",
+                control: {
+                    type: "toggle",
+                    key: "manageRightSidebar",
+                    defaultValue: DEFAULT_SETTINGS.manageRightSidebar,
+                },
+            },
             {
                 name: "Hide the left sidebar when the window is this narrow",
                 desc: "Increase this to hide the left sidebar sooner; decrease it to delay hiding",
@@ -49,6 +73,15 @@ export class SettingsTab extends PluginSettingTab {
                     type: "toggle",
                     key: "showSidebarsBack",
                     defaultValue: DEFAULT_SETTINGS.showSidebarsBack,
+                },
+            },
+            {
+                name: "Reopen manually collapsed sidebars",
+                desc: "Also reopen sidebars you collapsed yourself when the window gets wide enough",
+                control: {
+                    type: "toggle",
+                    key: "reopenManuallyCollapsedSidebars",
+                    defaultValue: DEFAULT_SETTINGS.reopenManuallyCollapsedSidebars,
                 },
             },
         ];

@@ -11,6 +11,8 @@ type ZenModePlugin = Plugin & {
 export default class HideSidebarsOnWindowResizePlugin extends Plugin {
     override settings!: HideSidebarsOnWindowResizeSettings;
     previousWidth!: number;
+    leftClosedByPlugin = false;
+    rightClosedByPlugin = false;
 
     override async onload(): Promise<void> {
         await this.loadSettings();
@@ -29,36 +31,56 @@ export default class HideSidebarsOnWindowResizePlugin extends Plugin {
     refreshSidebars(): void {
         const width = window.innerWidth;
 
+        // Left Sidebar
         if (
+            this.settings.manageLeftSidebar &&
             width < this.settings.leftMinWidth &&
             width < this.previousWidth &&
             !this.app.workspace.leftSplit.collapsed
         ) {
             this.app.workspace.leftSplit.collapse();
+            this.leftClosedByPlugin = true;
         } else if (
+            this.settings.manageLeftSidebar &&
             width > this.settings.leftMinWidth &&
             width > this.previousWidth &&
             this.app.workspace.leftSplit.collapsed &&
             this.settings.showSidebarsBack &&
-            !this.isInCompactMode()
+            !this.isInCompactMode() &&
+            (this.settings.reopenManuallyCollapsedSidebars || this.leftClosedByPlugin)
         ) {
             this.app.workspace.leftSplit.expand();
+            this.leftClosedByPlugin = false;
         }
 
+        // Right Sidebar
         if (
+            this.settings.manageRightSidebar &&
             width < this.settings.rightMinWidth &&
             width < this.previousWidth &&
             !this.app.workspace.rightSplit.collapsed
         ) {
             this.app.workspace.rightSplit.collapse();
+            this.rightClosedByPlugin = true;
         } else if (
+            this.settings.manageRightSidebar &&
             width > this.settings.rightMinWidth &&
             width > this.previousWidth &&
             this.app.workspace.rightSplit.collapsed &&
             this.settings.showSidebarsBack &&
-            !this.isInCompactMode()
+            !this.isInCompactMode() &&
+            (this.settings.reopenManuallyCollapsedSidebars || this.rightClosedByPlugin)
         ) {
             this.app.workspace.rightSplit.expand();
+            this.rightClosedByPlugin = false;
+        }
+
+        // Clear plugin ownership while the sidebar is open
+        if (!this.settings.manageLeftSidebar || !this.app.workspace.leftSplit.collapsed) {
+            this.leftClosedByPlugin = false;
+        }
+        if (!this.settings.manageRightSidebar || !this.app.workspace.rightSplit.collapsed) {
+            this.rightClosedByPlugin = false;
         }
 
         this.previousWidth = width;
